@@ -25,12 +25,14 @@ export default function Top10Poeple(props) {
       return response.json();
     })
     .then((dataJSON) => {
+      console.log(dataJSON)
       // --  ajout dans la liste des personnes
       let l = [...listeTopPeople]
       dataJSON.results.forEach((data)=>{
         let people = data
-        l.push({...people})
+        l.push(people)
       })
+      console.log(l)
       setTopPeople(l); 
       // -- passage à la page suivante (en prévision de la prochaine req)
       let p = Number(page) + 1
@@ -43,10 +45,9 @@ export default function Top10Poeple(props) {
   return (
   <FlatList
     data={listeTopPeople}
-    keyExtractor={ (item) => item.id.toString() }
+    keyExtractor={ (item,index) => (item.id + index).toString() }
     renderItem={({item, index}) => {
         return(
-          <TouchableOpacity>
                <View style={styles.item}> 
                     <Image 
                         source={ { 
@@ -56,7 +57,6 @@ export default function Top10Poeple(props) {
                     <Text style={styles.title}>{index+1} - {item.name} ({item.popularity})</Text>
                     { item.known_for.map((v)=> <Text key={v.id}> - {v.title ? v.title : v.name}</Text> )}   
                 </View>
-          </TouchableOpacity>
         )
       }
     }

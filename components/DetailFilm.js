@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { View, Image, StyleSheet, Text } from "react-native";
+import { SafeAreaView, ScrollView, Image, StyleSheet, Text } from "react-native";
 import Film from "../Film";
 
 export default function DetailFilm(props) {
@@ -22,7 +22,7 @@ export default function DetailFilm(props) {
         return response.json();
       })
       .then((dataJSON) => {
-        f = new Film(dataJSON)
+        let f = new Film(dataJSON)
         console.log(f);
         setFilm(f)
       })
@@ -32,7 +32,8 @@ export default function DetailFilm(props) {
   }, []);
 
   return (
-    <View style={styles.container}>
+   <SafeAreaView style={styles.container}>
+    <ScrollView>
       <Image 
         source={ { 
             uri : "https://image.tmdb.org/t/p/w500" + film.poster_path
@@ -40,7 +41,8 @@ export default function DetailFilm(props) {
         style={styles.image}></Image>
      <Text style={styles.title}>{film.title}</Text>
      <Text style={styles.overview}>{film.overview}</Text>
-    </View>
+    </ScrollView>
+   </SafeAreaView>
   );
   }
   const styles = StyleSheet.create({
@@ -62,8 +64,8 @@ export default function DetailFilm(props) {
         margin: 5,
       },
     overview: {
-        fontSize: 12,
-        margin: 5,
+        fontSize: 16,
+        padding: 10,
       },
   });
 

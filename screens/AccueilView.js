@@ -7,6 +7,7 @@ export default function AccueilView(props) {
     <View style={styles.container}>  
       {/* le logo */}
       <Image
+          style={styles.image}
           source={require('../assets/themoviedb.png')}
         />
       {/* la zone de saisie du critere */}
@@ -38,5 +39,9 @@ const styles = StyleSheet.create({
     margin: 12,
     borderWidth: 1,
     padding: 10,
+  },
+  image: {
+    height: 200,
+    width:200
   },
 });

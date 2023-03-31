@@ -41,7 +41,7 @@ export default function FilmsList(props) {
           <TouchableOpacity
               onPress={ () =>	props.navigation.navigate("Detail", {idFilm:item.id})}>
 
-               <View style={styles.item}> 
+                <View style={styles.item}> 
                   <Image 
                         source={ { 
                             uri : "https://image.tmdb.org/t/p/w500" 
@@ -49,7 +49,9 @@ export default function FilmsList(props) {
                             
                         }} 
                         style={styles.image}></Image>
-                 <Text style={styles.title}>{item.title}</Text>
+                </View>
+                <View style={styles.item}> 
+                    <Text style={styles.title}>{item.title}</Text>
                 </View>
           </TouchableOpacity>
         )
@@ -67,12 +69,12 @@ export default function FilmsList(props) {
       justifyContent: 'center',
     },
     item: {
-     // flex: 1,
-     // justifyContent: 'flex-start',
+     //flex: 1,
+     justifyContent: 'center',
      // paddingTop: 30,
      // borderRadius: 2,
      // height: 140,
-     // flexDirection: 'row'
+      flexDirection: 'row'
     },
     image: {
       width: 120,

@@ -4,17 +4,16 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
 import { Ionicons } from '@expo/vector-icons';
 
-import { StyleSheet, Text, View, Image } from 'react-native';
-
 import AccueilView from './screens/AccueilView'
 import FilmsView from './screens/FilmsView'
 import DetailView from './screens/DetailView'
 import Top10View from './screens/Top10View'
 
-const Tab = createBottomTabNavigator();
+
 
 // --  navigation principale = TabBar
 export default function App() {
+  const Tab = createBottomTabNavigator();
   return (
     <NavigationContainer>
       <Tab.Navigator
