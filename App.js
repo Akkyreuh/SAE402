@@ -24,20 +24,30 @@ export default function App() {
         })}
       >
         <Tab.Screen 
-        name="Search films" 
+        name="Rencontres" 
         component={FilmsScreen} 
         options={{
-          tabBarLabel: 'Films',
+          tabBarLabel: 'PARIER',
           tabBarIcon: ({ color, size }) => (
-            <Ionicons name="search" color={color} size={size} />
+            <Ionicons name="game-controller-outline" color={color} size={size} />
           ),
         }}
         />
         <Tab.Screen 
-        name="Top10 acteurs" 
+        name="LIVE" 
+        component={FilmsScreen} 
+        options={{
+          tabBarLabel: '  LIVE',
+          tabBarIcon: ({ color, size }) => (
+            <Ionicons name="barcode-outline" color={color} size={size} />
+          ),
+        }}
+        />
+        <Tab.Screen 
+        name="Connexion" 
         component={Top10Screen} 
         options={{
-          tabBarLabel: 'Top 10',
+          tabBarLabel: 'SE CONNECTER',
           tabBarIcon: ({ color, size }) => (
             <Ionicons name="person" color={color} size={size} />
           ),
