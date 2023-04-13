@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import { SafeAreaView, ScrollView, Image, StyleSheet, Text } from "react-native";
 import Film from "../Film";
 
@@ -11,10 +11,10 @@ export default function DetailFilm(props) {
           apiKey +
           "&language=fr"
 
-    console.log(url)
   const fetchOptions = { method: "GET" };
 
   const [film, setFilm] = useState({});
+ 
 
   useEffect(() => {
     fetch(url, fetchOptions)
@@ -25,6 +25,7 @@ export default function DetailFilm(props) {
         let f = new Film(dataJSON)
         console.log(f);
         setFilm(f)
+        
       })
       .catch((error) => {
         console.log(error);

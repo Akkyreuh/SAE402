@@ -1,3 +1,4 @@
+
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
@@ -9,11 +10,10 @@ import FilmsView from './screens/FilmsView'
 import DetailView from './screens/DetailView'
 import Top10View from './screens/Top10View'
 
-
-
 // --  navigation principale = TabBar
 export default function App() {
   const Tab = createBottomTabNavigator();
+
   return (
     <NavigationContainer>
       <Tab.Navigator
