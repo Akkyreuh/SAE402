@@ -2,7 +2,7 @@
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-
+import { useNavigation } from "@react-navigation/native";
 import { Ionicons } from '@expo/vector-icons';
 
 import AccueilView from './screens/AccueilView'
@@ -79,7 +79,6 @@ function FilmsScreen() {
   <Stack.Navigator>
     {/* la navigation doit se faire uniquement entre des View*/}
     <Stack.Screen name="Connexion" component={ConnexionView} />
-    <Stack.Screen name="Inscription" component={InscriptionView} />
   </Stack.Navigator>
   )
 }
@@ -89,14 +88,15 @@ function Top10Screen() {
   return (      
   <StackTop10.Navigator>
     <StackTop10.Screen name="Top" component={Top10View} />
+    <StackTop10.Screen name="Inscription" component={InscriptionView} />
   </StackTop10.Navigator>
   )
 
-  // function Inscription() {
-  //   const StackTop10 = createNativeStackNavigator();
-  //   return (      
-  //   <StackTop10.Navigator>
-  //     <StackTop10.Screen name="Top" component={InscriptionView} />
-  //   </StackTop10.Navigator>
-  //   )
-}
+  function Inscription() {
+    const StackTop10 = createNativeStackNavigator();
+    return (      
+    <StackTop10.Navigator>
+      <StackTop10.Screen name="Inscription" component={InscriptionView} />
+    </StackTop10.Navigator>
+    )
+}}

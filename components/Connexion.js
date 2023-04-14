@@ -1,10 +1,11 @@
 import React, { useState } from "react";
 import { View, Text, TextInput, TouchableOpacity, StyleSheet } from "react-native";
 import RegisterForm from "./Inscription";
-
-export default function LoginForm(props) {
+import { useNavigation } from "@react-navigation/native";
+export default function LoginForm() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const navigation = useNavigation();
 
   function handleLogin() {
     // console.log("Email:" ${email}, "Password:" ${password});
@@ -30,12 +31,13 @@ export default function LoginForm(props) {
       <TouchableOpacity onPress={handleLogin} style={styles.button}>
         <Text style={styles.buttonText}>Connexion</Text>
       </TouchableOpacity>
-      <TouchableOpacity  onPress={ () =>	props.navigation.navigate("Inscription")}>
+      <TouchableOpacity onPress={() => navigation.navigate("Inscription")}>
         <Text style={styles.registerText}>Pas encore inscrit?</Text>
       </TouchableOpacity>
     </View>
   );
 }
+
 
 const styles = StyleSheet.create({
   container: {
