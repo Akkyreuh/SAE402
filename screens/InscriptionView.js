@@ -1,12 +1,12 @@
 
 import { StyleSheet, View, Text } from 'react-native';
-import Top10Poeple from '../components/Top10People';
+import RegisterForm from '../components/Inscription';
 
-export default function Top10View(props) {
+export default function InscriptionView(props) {
   return (
     <View style={styles.container}>  
-    <Text>Top10</Text>
-    <Top10Poeple></Top10Poeple>
+   
+    <RegisterForm></RegisterForm>
     </View>
     
   );

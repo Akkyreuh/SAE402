@@ -1,12 +1,13 @@
 
 import { StyleSheet, View, Text } from 'react-native';
-import Top10Poeple from '../components/Connexion';
 
-export default function Top10View(props) {
+import LoginForm from '../components/Connexion';
+
+export default function ConnexionView(props) {
   return (
     <View style={styles.container}>  
-    <Text>Top10</Text>
-    <Top10Poeple></Top10Poeple>
+   
+    <LoginForm></LoginForm>
     </View>
     
   );

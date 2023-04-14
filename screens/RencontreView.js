@@ -1,13 +1,13 @@
 import { StyleSheet, Text, View, Image } from 'react-native';
-import FilmsList from '../components/RencontreList';
+import RencontreList from '../components/RencontreList';
 
-export default function FimsView() {
+export default function RencontreView() {
   // -- récupérer le critere saisi dans le formulaire et transmis par le router
   return (
     <View style={styles.container}>
         <Text>Liste des Rencontres</Text>
         {/* afficher le composant qui va faire la recherche et afficher les résultats */}
-        <FilmsList ></FilmsList>
+        <RencontreList ></RencontreList>
     </View> 
   );
 }

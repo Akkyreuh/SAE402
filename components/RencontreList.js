@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { FlatList, View, Image, StyleSheet, Text, TouchableOpacity, Button } from "react-native";
 import Film from "../Film";
 
-export default function FilmsList() {
+export default function RencontreList() {
 
   const url = "https://akkyrlouis.alwaysdata.net/api/getrencontres";
 

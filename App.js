@@ -9,6 +9,10 @@ import AccueilView from './screens/AccueilView'
 import FilmsView from './screens/RencontreView'
 import DetailView from './screens/DetailView'
 import Top10View from './screens/ConnexionView'
+import RegisterForm from './components/Inscription';
+import InscriptionView from './screens/InscriptionView';
+import ConnexionView from './screens/ConnexionView';
+import RencontreView from './screens/RencontreView';
 
 // --  navigation principale = TabBar
 export default function App() {
@@ -25,7 +29,7 @@ export default function App() {
       >
         <Tab.Screen 
         name="Rencontres" 
-        component={FilmsScreen} 
+        component={RencontreScreen} 
         options={{
           tabBarLabel: 'PARIER',
           tabBarIcon: ({ color, size }) => (
@@ -58,12 +62,24 @@ export default function App() {
   );
 }
 // -- parie 1 = recherche de films
+function RencontreScreen() {
+  const Stack = createNativeStackNavigator();
+  return (      
+  <Stack.Navigator>
+    {/* la navigation doit se faire uniquement entre des View*/}
+    <Stack.Screen name="Rencontre" component={RencontreView} />
+
+  </Stack.Navigator>
+  )
+}
+
 function FilmsScreen() {
   const Stack = createNativeStackNavigator();
   return (      
   <Stack.Navigator>
     {/* la navigation doit se faire uniquement entre des View*/}
-    <Stack.Screen name="Accueil" component={FilmsView} />
+    <Stack.Screen name="Connexion" component={ConnexionView} />
+    <Stack.Screen name="Inscription" component={InscriptionView} />
   </Stack.Navigator>
   )
 }
@@ -75,4 +91,12 @@ function Top10Screen() {
     <StackTop10.Screen name="Top" component={Top10View} />
   </StackTop10.Navigator>
   )
+
+  // function Inscription() {
+  //   const StackTop10 = createNativeStackNavigator();
+  //   return (      
+  //   <StackTop10.Navigator>
+  //     <StackTop10.Screen name="Top" component={InscriptionView} />
+  //   </StackTop10.Navigator>
+  //   )
 }
