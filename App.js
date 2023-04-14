@@ -6,9 +6,9 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { Ionicons } from '@expo/vector-icons';
 
 import AccueilView from './screens/AccueilView'
-import FilmsView from './screens/FilmsView'
+import FilmsView from './screens/RencontreView'
 import DetailView from './screens/DetailView'
-import Top10View from './screens/Top10View'
+import Top10View from './screens/ConnexionView'
 
 // --  navigation principale = TabBar
 export default function App() {
@@ -63,9 +63,7 @@ function FilmsScreen() {
   return (      
   <Stack.Navigator>
     {/* la navigation doit se faire uniquement entre des View*/}
-    <Stack.Screen name="Accueil" component={AccueilView} />
-    <Stack.Screen name="Films" component={FilmsView} />
-    <Stack.Screen name="Detail" component={DetailView} />
+    <Stack.Screen name="Accueil" component={FilmsView} />
   </Stack.Navigator>
   )
 }

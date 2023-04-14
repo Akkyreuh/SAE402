@@ -1,62 +1,76 @@
-import { useState, useEffect } from "react";
-import { FlatList, View, Image, StyleSheet, Text, TouchableOpacity } from "react-native";
+import React, { useState } from "react";
+import { View, Text, TextInput, TouchableOpacity, StyleSheet } from "react-native";
 
-export default function Top10Poeple(props) {
-  const apiKey = "af1e1c8f8ad6efb5b326eabaffa38b8a";
-  const url =
-    "https://api.themoviedb.org/3/person/popular?api_key=" +
-    apiKey +
-    "&language=fr-FR&page="
-  const fetchOptions = { method: "GET" };
-  // -- state = liste des personnes
-  const [listeTopPeople, setTopPeople] = useState([]);
-  
+export default function LoginForm() {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
-  // -- requete initiala
-  useEffect(() => {
-    getDatas()
-  }, []);
-
-  // -- req AJAX = la 1ère et les suivantes en gérant le num de page
-  function getDatas() {
-    fetch(url, fetchOptions)
-    .then((response) => {
-      return response.json();
-    })
-    .then((dataJSON) => {
-      // --  ajout dans la liste des personnes
-      let l = [...listeTopPeople]
-      dataJSON.results.forEach((data)=>{
-        let people = data
-        l.push(people)
-      })
-      console.log(l)
-      setTopPeople(l);  
-    })
-    .catch((error) => {
-      console.log(error);
-    });
+  function handleLogin() {
+    console.log(`Email: ${email}, Password: ${password}`);
   }
-  return (
-    <Text>Liste personnes</Text>
-  )}
-  const styles = StyleSheet.create({
-    container: {
-      flex: 1,
-      backgroundColor: '#fff',
-      alignItems: 'center',
-      justifyContent: 'center',
-    },
-    item: {
-    },
-    image: {
-      width: 200,
-      height: 200,
-      margin: 5,
-      backgroundColor: 'gray'
-    },
-    title: {
-      fontSize: 20,
-    },
-  });
 
+  return (
+    <View style={styles.container}>
+      <Text style={styles.title}>Connectez-vous</Text>
+      <TextInput
+        style={styles.input}
+        placeholder="Adresse email"
+        keyboardType="email-address"
+        value={email}
+        onChangeText={setEmail}
+      />
+      <TextInput
+        style={styles.input}
+        placeholder="Mot de passe"
+        secureTextEntry
+        value={password}
+        onChangeText={setPassword}
+      />
+      <TouchableOpacity onPress={handleLogin} style={styles.button}>
+        <Text style={styles.buttonText}>Connexion</Text>
+      </TouchableOpacity>
+      <TouchableOpacity onPress={() => alert("Inscription")} style={styles.register}>
+        <Text style={styles.registerText}>Pas encore inscrit?</Text>
+      </TouchableOpacity>
+    </View>
+  );
+}
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
+    backgroundColor: "#F5FCFF"
+  },
+  title: {
+    fontSize: 20,
+    textAlign: "center",
+    margin: 10
+  },
+  input: {
+    height: 40,
+    width: "80%",
+    borderColor: "gray",
+    borderWidth: 1,
+    margin: 10,
+    paddingLeft: 10
+  },
+  button: {
+    backgroundColor: "#4285F4",
+    borderRadius: 5,
+    padding: 10,
+    margin: 10
+  },
+  buttonText: {
+    color: "#FFFFFF",
+    fontSize: 20,
+    textAlign: "center"
+  },
+  register: {
+    margin: 10
+  },
+  registerText: {
+    color: "#4285F4"
+  }
+});
