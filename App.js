@@ -7,12 +7,13 @@ import { Ionicons } from '@expo/vector-icons';
 
 import AccueilView from './screens/AccueilView'
 import FilmsView from './screens/RencontreView'
-import DetailView from './screens/DetailView'
+
 import Top10View from './screens/ConnexionView'
 import RegisterForm from './components/Inscription';
 import InscriptionView from './screens/InscriptionView';
 import ConnexionView from './screens/ConnexionView';
 import RencontreView from './screens/RencontreView';
+import AjoutView from './screens/AjouterRencontreView';
 
 // --  navigation principale = TabBar
 export default function App() {
@@ -38,7 +39,7 @@ export default function App() {
         }}
         />
         <Tab.Screen 
-        name="LIVE" 
+        name="Ajout" 
         component={FilmsScreen} 
         options={{
           tabBarLabel: '  LIVE',
@@ -78,7 +79,8 @@ function FilmsScreen() {
   return (      
   <Stack.Navigator>
     {/* la navigation doit se faire uniquement entre des View*/}
-    <Stack.Screen name="Connexion" component={ConnexionView} />
+   
+    <Stack.Screen name="Ajout" component={AjoutView} />
   </Stack.Navigator>
   )
 }

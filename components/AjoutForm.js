@@ -1,12 +1,14 @@
+
+
 import React, { useState } from "react";
 import { StyleSheet, View, TextInput, Button, Text } from "react-native";
 
-export default function AjoutForm() {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [nom, setNom] = useState("");
-  const [prenom, setPrenom] = useState("");
-  const [pseudo, setPseudo] = useState("");
+export default function RegisterForm() {
+  const [jeux, setJeux] = useState("");
+  const [equipe1, setEquipe1] = useState("");
+  const [equipe2, setEquipe2] = useState("");
+  const [cote_equipe1, setCote_equipe1] = useState("");
+  const [cote_equipe2, setCote_equipe2] = useState("");
 
   function alert(message) {
     // implémentation de la méthode alert
@@ -15,7 +17,7 @@ export default function AjoutForm() {
   };
 
   const handleSubmit = () => {
-    const url = 'https://akkyrlouis.alwaysdata.net/api/adduti';
+    const url = 'https://akkyrlouis.alwaysdata.net/api/postrencontres';
     
     const options = {
     method: 'POST',
@@ -23,11 +25,11 @@ export default function AjoutForm() {
     'Content-Type': 'application/json',
     },
     body: JSON.stringify({
-    email: email,
-    password: password,
-    nom: nom,
-    prenom: prenom,
-    pseudo: pseudo,
+      jeux: jeux,
+      equipe1: equipe1,
+      equipe2: equipe2,
+      cote_equipe1: cote_equipe1,
+      cote_equipe2: cote_equipe2,
     }),
     };
     fetch(url, options)
@@ -42,56 +44,51 @@ export default function AjoutForm() {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Inscription</Text>
+      <Text style={styles.title}>Ajout d'une rencontre</Text>
 
       <TextInput
         style={styles.input}
-        placeholder="Adresse email"
-        onChangeText={(text) => setEmail(text)}
-        value={email}
-        keyboardType="email-address"
+        placeholder="Jeu"
+        onChangeText={(text) => setJeux(text)}
+        value={jeux}
         autoCapitalize="none"
       />
 
       <TextInput
         style={styles.input}
-        placeholder="Mot de passe"
-        type="password"
-        onChangeText={(text) => setPassword(text)}
-        value={password}
-        secureTextEntry={true}
+        placeholder="Equipe1"
+        onChangeText={(text) => setEquipe1(text)}
+        value={equipe1}
         autoCapitalize="none"
       />
 
       <TextInput
         style={styles.input}
-        placeholder="Prénom"
-        onChangeText={(text) => setPrenom(text)}
-        value={prenom}
+        placeholder="Equipe2"
+        onChangeText={(text) => setEquipe2(text)}
+        value={equipe2}
         autoCapitalize="words"
       />
 
       <TextInput
         style={styles.input}
-        placeholder="Nom de famille"
-        onChangeText={(text) => setNom(text)}
-        value={nom}
+        placeholder="Cote equipe1"
+        type="number"
+        onChangeText={(text) => setCote_equipe1(text)}
+        value={cote_equipe1}
         autoCapitalize="words"
       />
 
       <TextInput
         style={styles.input}
-        placeholder="pseudo"
-        onChangeText={(text) => setPseudo(text)}
-        value={pseudo}
+        placeholder="Cote equipe1"
+        type="number"
+        onChangeText={(text) => setCote_equipe2(text)}
+        value={cote_equipe2}
         autoCapitalize="none"
       />
 
-      <Button title="S'inscrire" onPress={handleSubmit} />
-
-      <Text style={styles.text} onPress={() => console.log("Aller à la page d'inscription")}>
-        Déjà inscrit ? Connectez-vous
-      </Text>
+      <Button title="Valider" onPress={handleSubmit} />
     </View>
   );
 }
